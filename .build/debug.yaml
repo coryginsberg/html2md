@@ -1,0 +1,43 @@
+client:
+  name: basic
+  file-system: device-agnostic
+tools: {}
+targets:
+  "PackageStructure": ["<PackageStructure>"]
+  "html2md-debug.module": ["<html2md-debug.module>"]
+  "main": ["<html2md-debug.module>"]
+  "test": ["<html2md-debug.module>"]
+default: "main"
+nodes:
+  "/Users/coryginsberg/Developer/html2md/":
+    is-directory-structure: true
+    content-exclusion-patterns: [".git",".build"]
+commands:
+  "/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/html2md.cpp.o":
+    tool: clang
+    inputs: ["/Users/coryginsberg/Developer/html2md/src/html2md.cpp"]
+    outputs: ["/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/html2md.cpp.o"]
+    description: "Compiling html2md src/html2md.cpp"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang","-fobjc-arc","-target","arm64-apple-macosx10.15","-O0","-DSWIFT_PACKAGE=1","-DDEBUG=1","-fblocks","-index-store-path","/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/index/store","-I","/Users/coryginsberg/Developer/html2md/spm-headers","-isysroot","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-fPIC","-g","-g","-MD","-MT","dependencies","-MF","/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/html2md.cpp.d","-std=gnu++11","-c","/Users/coryginsberg/Developer/html2md/src/html2md.cpp","-o","/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/html2md.cpp.o"]
+    deps: "/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/html2md.cpp.d"
+
+  "/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/table.cpp.o":
+    tool: clang
+    inputs: ["/Users/coryginsberg/Developer/html2md/src/table.cpp"]
+    outputs: ["/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/table.cpp.o"]
+    description: "Compiling html2md src/table.cpp"
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang","-fobjc-arc","-target","arm64-apple-macosx10.15","-O0","-DSWIFT_PACKAGE=1","-DDEBUG=1","-fblocks","-index-store-path","/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/index/store","-I","/Users/coryginsberg/Developer/html2md/spm-headers","-isysroot","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-fPIC","-g","-g","-MD","-MT","dependencies","-MF","/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/table.cpp.d","-std=gnu++11","-c","/Users/coryginsberg/Developer/html2md/src/table.cpp","-o","/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/table.cpp.o"]
+    deps: "/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/table.cpp.d"
+
+  "<html2md-debug.module>":
+    tool: phony
+    inputs: ["/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/html2md.cpp.o","/Users/coryginsberg/Developer/html2md/.build/arm64-apple-macosx/debug/html2md.build/src/table.cpp.o"]
+    outputs: ["<html2md-debug.module>"]
+
+  "PackageStructure":
+    tool: package-structure-tool
+    inputs: ["/Users/coryginsberg/Developer/html2md/","/Users/coryginsberg/Developer/html2md/Package.swift","/Users/coryginsberg/Developer/html2md/Package.resolved"]
+    outputs: ["<PackageStructure>"]
+    description: "Planning build"
+    allow-missing-inputs: true
+

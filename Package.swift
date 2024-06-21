@@ -21,10 +21,17 @@ let package = Package(
       path: ".",
       exclude: ["tests/", "cli/", "cmake/", "docs/", "js/", "python/", "scripts/"],
       sources: [
-        "src/html2md.cpp",
-        "src/table.cpp"
+        "src/"
       ],
-      publicHeadersPath: "spm-headers"
+      publicHeadersPath: "spm-headers/",
+      cSettings: [
+        .define("O2", .when(configuration: .debug)),
+        .define("O3", .when(configuration: .release))
+      ],
+      cxxSettings: [
+        .define("O2", .when(configuration: .debug)),
+        .define("O3", .when(configuration: .release))
+      ]
     )
   ],
   cxxLanguageStandard: .gnucxx11

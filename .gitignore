@@ -2,6 +2,7 @@
 build-linux/
 build-windows/
 build-wasm/
+.build/
 doc/
 tests/error.log
 conan/
